@@ -4,7 +4,7 @@
 #include "cuadradoMedio.c"
 #include "congruenciaLineal.c"
 int n;
-
+int *nurses;
 void sumFile(){
     FILE * cl = fopen("congruenciaLineal.ctxt","r");
     FILE * cm = fopen("cuadradoMedio.txt","r");
@@ -18,8 +18,7 @@ void sumFile(){
     }
 }
 
-int main(){
-
+void generateNumbers(){
     printf("give me the number of period\n");
     scanf("%d",&n);
     FILE *fp = fopen("periodNumber.txt", "w");
@@ -28,5 +27,39 @@ int main(){
     cuadradoMedio();
     congruenciaLineal();
     sumFile();
+}
+
+
+
+int * getArrives(){
+    int nurse;
+    printf("Which number beetween 0 and 9 represents a nurse arrive\n");
+    scanf("%d", &nurse);
+    int cont = 0;
+    int * nurses = malloc(n * sizeof(int));
+    FILE * numbers = fopen("periodNumber.txt","r");
+    for(int i = 0; i < n; i++){
+        lli number;
+        fscanf(numbers, "%d", &number);
+        for(int i =0; i < 10; i++; i++){
+            if(nurse == number%10){
+                cont++;
+            }
+        }
+        nurses[i] = cont; 
+    }
+    return nurses;
+} 
+
+int getAvgWaitTime(){
+    int waitingTime[] = {8,9,9,10,10,10,11,11,11,11};
+    
+}
+
+int main(){
+
+    generateNumbers();    
+    nurse = getArrives;
+
     return 0;
 }
