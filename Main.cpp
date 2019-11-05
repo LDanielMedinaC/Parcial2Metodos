@@ -25,6 +25,7 @@ void generateNumbers(){
     fprintf(fp, "%d\n",n);
     fclose(fp);
     cuadradoMedio();
+    printf("is it here?");
     congruenciaLineal();
     sumFile();
 }
@@ -36,12 +37,12 @@ int * getArrives(){
     printf("Which number beetween 0 and 9 represents a nurse arrive\n");
     scanf("%d", &nurse);
     int cont = 0;
-    int * nurses = malloc(n * sizeof(int));
+    int * nurses = (int * )malloc(n * sizeof(int));
     FILE * numbers = fopen("periodNumber.txt","r");
     for(int i = 0; i < n; i++){
         lli number;
         fscanf(numbers, "%d", &number);
-        for(int i =0; i < 10; i++; i++){
+        for(int i =0; i < 10; i++){
             if(nurse == number%10){
                 cont++;
             }
@@ -59,7 +60,7 @@ int getAvgWaitTime(){
 int main(){
 
     generateNumbers();    
-    nurse = getArrives;
+    nurses = getArrives();
 
     return 0;
 }
